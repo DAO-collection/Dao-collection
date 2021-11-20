@@ -190,7 +190,7 @@ func CnfInit() {
 		DbUser : "root",
 		DbPassword : "",
 		DbPort : "3306",
-		DbDataBase : "go-blog",
+		DbDataBase : "dao",
 		DbHost : "127.0.0.1",
 		AlarmType : "mail,wechat",
 		MailUser : "test@test.com",

@@ -12,13 +12,15 @@ require (
 	github.com/microcosm-cc/bluemonday v1.0.2
 	github.com/mojocn/base64Captcha v0.0.0-20190509095025-87c9c59224d8
 	github.com/qiniu/api.v7 v7.2.5+incompatible
-	github.com/qiniu/x v7.0.8+incompatible // indirect
+	// github.com/qiniu/x v7.0.8+incompatible // indirect
+	github.com/qiniu/x v1.7.0
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	github.com/speps/go-hashids v2.0.0+incompatible
 	golang.org/x/crypto v0.0.0-20190513172903-22d7a77e9e5f
 	gopkg.in/russross/blackfriday.v2 v2.0.0-00010101000000-000000000000
 	gopkg.in/yaml.v2 v2.2.2
-	qiniupkg.com/x v7.0.8+incompatible // indirect
+	// qiniupkg.com/x v7.0.8+incompatible // indirect
+	qiniupkg.com/x v1.7.0
 )
 
 replace gopkg.in/russross/blackfriday.v2 => github.com/russross/blackfriday v2.0.0+incompatible
