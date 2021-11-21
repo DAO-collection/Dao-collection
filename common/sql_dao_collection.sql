@@ -1,27 +1,21 @@
--- MySQL dump 10.13  Distrib 8.0.26, for macos11.3 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `dao_collection` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `dao_collection`;
+-- MySQL dump 10.13  Distrib 8.0.27, for macos11 (x86_64)
 --
--- Host: localhost    Database: go-blog
+-- Host: 127.0.0.1    Database: dao_collection
 -- ------------------------------------------------------
--- Server version	8.0.26
+-- Server version	8.0.27
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
--- Current Database: `go-blog`
---
-
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `go-blog` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-
-USE `go-blog`;
 
 --
 -- Table structure for table `z_categories`
@@ -52,6 +46,85 @@ LOCK TABLES `z_categories` WRITE;
 /*!40000 ALTER TABLE `z_categories` DISABLE KEYS */;
 INSERT INTO `z_categories` VALUES (1,'default','默认分类','默认的分类',0,'2021-11-07 04:37:12','2021-11-07 04:37:12'),(2,'DAO Week','DAO Week','DAO Week',0,'2021-11-07 07:24:38','2021-11-07 07:24:38');
 /*!40000 ALTER TABLE `z_categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `z_dao_posts`
+--
+
+DROP TABLE IF EXISTS `z_dao_posts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `z_dao_posts` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `uid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'uid',
+  `user_id` int NOT NULL COMMENT '用户ID',
+  `start_time` datetime DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'dao-name',
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'img-url',
+  `members` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0' COMMENT 'member number',
+  `key_contributors` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'a text list',
+  `token_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'name string',
+  `token_link` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'url',
+  `token_holders` int NOT NULL DEFAULT '0' COMMENT 'numbers',
+  `treasury` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'link',
+  `AUM` int NOT NULL DEFAULT '0' COMMENT 'aum number',
+  `voting` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'link',
+  `forum` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'link',
+  `website` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'link',
+  `twitter` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'link',
+  `discord` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'link',
+  `wiki` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'link',
+  `summary` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '摘要',
+  `introduction` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'dao内容',
+  `how_to_join` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'how-to-join',
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `z_dao_posts_user_id_index` (`user_id`),
+  KEY `z_dao_posts_uid_index` (`uid`),
+  KEY `z_dao_posts_title_index` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `z_dao_posts`
+--
+
+LOCK TABLES `z_dao_posts` WRITE;
+/*!40000 ALTER TABLE `z_dao_posts` DISABLE KEYS */;
+INSERT INTO `z_dao_posts` VALUES (1,'asdfal3',2,NULL,'Bankless','https://tva1.sinaimg.cn/large/008i3skNly1gwly9azas4j31960u0ncn.jpg','25','aaa, bbb, ccc','BANK','https://coinmarketcap.com/currencies/float-protocol/',3500,'0x24a6a37576377f63f194caa5f518a60f45b42921',34,'https://twitter.com/FloatProtocol','https://twitter.com/FloatProtocol','https://twitter.com/FloatProtocol','https://twitter.com/FloatProtocol','https://twitter.com/FloatProtocol','https://twitter.com/FloatProtocol','Decentralised Finance needs stability, but we can do better than the dollar.','Test test...','Test test...',NULL,'2020-12-17 16:00:00','2021-11-20 13:56:22');
+/*!40000 ALTER TABLE `z_dao_posts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `z_dao_tags`
+--
+
+DROP TABLE IF EXISTS `z_dao_tags`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `z_dao_tags` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '标签名',
+  `display_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '标签别名',
+  `seo_desc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'seo描述',
+  `num` int NOT NULL DEFAULT '0' COMMENT '被使用次数',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `z_dao_tags_display_name_index` (`display_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `z_dao_tags`
+--
+
+LOCK TABLES `z_dao_tags` WRITE;
+/*!40000 ALTER TABLE `z_dao_tags` DISABLE KEYS */;
+/*!40000 ALTER TABLE `z_dao_tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -349,4 +422,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-07 19:40:11
+-- Dump completed on 2021-11-21 16:34:42
