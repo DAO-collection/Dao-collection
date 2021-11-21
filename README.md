@@ -31,12 +31,16 @@
 ### how to run on local?
 + get vscode, clone this repo
 + install go, mysql, redis on local
-+ run common/sql.sql on local mysql( usually with mysqlworkbench)
++ run common/sql_dao_collection.sql on local mysql( usually with mysqlworkbench)
 + go run main.go
 + [backend url](http://127.0.0.1:8081/backend/login)
 ```
 [GIN-debug] Listening and serving HTTP on :8081
 ```
++ [后台](http://127.0.0.1:8081/backend/home)
++ [网站](http://127.0.0.1:8081/)
++ username: a@ab3a.net
++ password: 123456
 ### most errors
 + 
 ```
